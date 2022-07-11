@@ -1201,12 +1201,13 @@ void prepareMCMatchInfo(){
     if (_track_trueID[itrk] >= 0 && trackSource == 0){
       Int_t mcID = _track_trueID[itrk];
       if (_mcpart_PDG[mcID] == 11){
-        int bcid = _mcpart_BCID[mcID]-1;
-        if (_hepmcp_status[bcid] == 1 && _hepmcp_status[_hepmcp_m1[bcid]-1] > 1)
+        int bcid = _mcpart_BCID[mcID]-10001;
+        //if (_hepmcp_status[bcid] == 1 && _hepmcp_status[_hepmcp_m1[bcid]-1] > 1)
+        if (_hepmcp_status[bcid] == 1 && _hepmcp_m1[bcid] == 10001)
           trackID_ScatteredElectron = itrk;
       }      
     }
-    
+  
     for(Int_t iproj=nCurrProj; iproj<_nProjections; iproj++){
       if (itrk != _track_ProjTrackID[iproj])
         continue;
